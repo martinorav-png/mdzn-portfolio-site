@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — MDZN | Martin Orav</title>
+    <meta name="description"
+        content="Selected works and experiments by Martin Orav. Game design, web development, product design, and hardware projects.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Noise overlay for texture -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav__logo">MDZN</a>
+        <ul class="nav__links">
+            <li><a href="projects.html" class="nav__link active">Projects</a></li>
+            <li><a href="index.html#about" class="nav__link">About</a></li>
+            <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-header__title">Projects</h1>
+        <p class="page-header__subtitle">Selected works & experiments</p>
+    </header>
+
+    <!-- Projects Section -->
+    <main class="projects">
+        <!-- Filter tags -->
+        <div class="projects__filters" role="tablist" aria-label="Filter projects by category">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="filter-btn" data-filter="game-design" role="tab" aria-selected="false">Game Design</button>
+            <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
+            <button class="filter-btn" data-filter="product-design" role="tab" aria-selected="false">Product
+                Design</button>
+            <button class="filter-btn" data-filter="hardware" role="tab" aria-selected="false">Hardware</button>
+        </div>
+
+        <!-- Projects grid -->
+        <div class="projects__grid" id="projects-grid">
+            <!-- Project cards injected via JS -->
+            <div class="projects__loading">
+                <div class="loader"></div>
+                <p>Loading projects...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__copyright">© 2025 Martin Orav. Built with care in Tallinn.</p>
+            <p class="footer__back">
+                <a href="index.html">← Back to home</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/projects.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

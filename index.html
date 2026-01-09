@@ -27,14 +27,14 @@
     <nav class="nav">
         <a href="#hero" class="nav__logo">MDZN</a>
         <ul class="nav__links">
-            <li><a href="#projects" class="nav__link">Projects</a></li>
+            <li><a href="projects.html" class="nav__link">Projects</a></li>
             <li><a href="#about" class="nav__link">About</a></li>
             <li><a href="#contact" class="nav__link">Contact</a></li>
         </ul>
     </nav>
 
     <!-- Hero / Masthead -->
-    <header id="hero" class="hero">
+    <header id="hero" class="hero hero--centered">
         <div class="hero__content">
             <p class="hero__issue">Portfolio 2026</p>
             <h1 class="hero__title">
@@ -43,41 +43,23 @@
             </h1>
             <p class="hero__subtitle">Game design, interaction design & creative development</p>
             <div class="hero__cta">
-                <a href="#projects" class="btn btn--primary">View Projects</a>
+                <a href="projects.html" class="btn btn--primary">View Projects</a>
                 <a href="#contact" class="btn btn--ghost">Get in Touch</a>
             </div>
         </div>
-        <div class="hero__featured" id="featured-project">
-            <!-- Featured project injected via JS -->
-        </div>
-    </header>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="section__header">
-            <h2 class="section__title">Projects</h2>
-            <p class="section__subtitle">Selected works & experiments</p>
-        </div>
-
-        <!-- Filter tags -->
-        <div class="projects__filters" role="tablist" aria-label="Filter projects by category">
-            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-            <button class="filter-btn" data-filter="game-design" role="tab" aria-selected="false">Game Design</button>
-            <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
-            <button class="filter-btn" data-filter="product-design" role="tab" aria-selected="false">Product
-                Design</button>
-            <button class="filter-btn" data-filter="hardware" role="tab" aria-selected="false">Hardware</button>
-        </div>
-
-        <!-- Projects grid -->
-        <div class="projects__grid" id="projects-grid">
-            <!-- Project cards injected via JS -->
-            <div class="projects__loading">
-                <div class="loader"></div>
-                <p>Loading projects...</p>
+        <!-- Showcase carousel - cycles through random works -->
+        <div class="hero__showcase" id="showcase-carousel">
+            <div class="showcase__frame">
+                <div class="showcase__images" id="showcase-images">
+                    <!-- Images injected via JS -->
+                </div>
+            </div>
+            <div class="showcase__indicators" id="showcase-indicators">
+                <!-- Dots injected via JS -->
             </div>
         </div>
-    </section>
+    </header>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -110,7 +92,7 @@
                         <span class="stat__label">Based in</span>
                     </div>
                     <div class="stat">
-                        <span class="stat__value">2025</span>
+                        <span class="stat__value">2027</span>
                         <span class="stat__label">Graduating</span>
                     </div>
                 </div>
@@ -170,7 +152,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer__container">
-            <p class="footer__copyright">© 2025 Martin Orav. Built with care in Tallinn.</p>
+            <p class="footer__copyright">© 2026 Martin Orav. Built with care in Tallinn.</p>
             <p class="footer__back">
                 <a href="#hero">Back to top ↑</a>
             </p>
@@ -178,7 +160,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script type="module" src="js/projects.js"></script>
+    <script type="module" src="js/showcase.js"></script>
     <script src="js/main.js"></script>
 </body>
 

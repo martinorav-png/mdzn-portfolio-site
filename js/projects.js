@@ -3,6 +3,9 @@
    Supabase integration for fetching and rendering project data
    ========================================================================== */
 
+// ==========================================================================
+// CONFIGURATION — Replace with your Supabase credentials
+// ==========================================================================
 const SUPABASE_URL = 'https://ceexzutcamztvkpotwty.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNlZXh6dXRjYW16dHZrcG90d3R5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYzNTk2NDAsImV4cCI6MjA4MTkzNTY0MH0.TigK8iVPHMr0TR4LH7C2bRgvfzEVhzi6yUjuNdYub2g';
 
@@ -24,9 +27,6 @@ async function initProjects() {
     try {
         // Fetch projects from Supabase
         allProjects = await fetchProjects();
-        
-        // Render featured project
-        renderFeaturedProject();
         
         // Render all projects
         renderProjects(allProjects);
@@ -61,41 +61,12 @@ async function fetchProjects() {
 // ==========================================================================
 // Rendering
 // ==========================================================================
-function renderFeaturedProject() {
-    const container = document.getElementById('featured-project');
-    const featured = allProjects.find(p => p.featured);
-
-    if (!featured || !container) return;
-
-    container.innerHTML = `
-        <a href="${featured.project_url || '#'}" class="featured-card" target="_blank" rel="noopener noreferrer">
-            <span class="featured-card__badge">Featured</span>
-            <img 
-                src="${featured.image_url || 'https://via.placeholder.com/600x375'}" 
-                alt="${featured.title}" 
-                class="featured-card__image"
-                loading="lazy"
-            >
-            <div class="featured-card__content">
-                <h3 class="featured-card__title">${featured.title}</h3>
-                <p class="featured-card__description">${featured.description}</p>
-                <div class="featured-card__tags">
-                    ${renderTags(featured.tags)}
-                </div>
-            </div>
-        </a>
-    `;
-}
-
 function renderProjects(projects) {
     const grid = document.getElementById('projects-grid');
     
     if (!grid) return;
 
-    // Filter out featured project from main grid (optional — remove if you want it in both places)
-    const nonFeatured = projects.filter(p => !p.featured);
-    
-    if (nonFeatured.length === 0) {
+    if (projects.length === 0) {
         grid.innerHTML = `
             <div class="projects__empty">
                 <p>No projects found.</p>
@@ -104,7 +75,7 @@ function renderProjects(projects) {
         return;
     }
 
-    grid.innerHTML = nonFeatured.map((project, index) => `
+    grid.innerHTML = projects.map((project, index) => `
         <article class="project-card" style="animation-delay: ${index * 0.1}s" data-tags="${(project.tags || []).join(' ').toLowerCase()}">
             <div class="project-card__image-wrapper">
                 <img 
@@ -232,7 +203,13 @@ function matchesCategory(tags, filter) {
     return keywords.some(keyword => tags.includes(keyword));
 }
 
+// ==========================================================================
+// Demo Mode (for testing without Supabase)
+// ==========================================================================
+// Uncomment this function and call it instead of fetchProjects() to test
+// with sample data before setting up Supabase
 
+/*
 function getDemoProjects() {
     return [
         {
@@ -287,3 +264,4 @@ function getDemoProjects() {
         }
     ];
 }
+*/
