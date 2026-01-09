@@ -232,13 +232,7 @@ function matchesCategory(tags, filter) {
     return keywords.some(keyword => tags.includes(keyword));
 }
 
-// ==========================================================================
-// Demo Mode (for testing without Supabase)
-// ==========================================================================
-// Uncomment this function and call it instead of fetchProjects() to test
-// with sample data before setting up Supabase
 
-/*
 function getDemoProjects() {
     return [
         {
@@ -293,4 +287,3 @@ function getDemoProjects() {
         }
     ];
 }
-*/
