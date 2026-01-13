@@ -48,7 +48,7 @@
             <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
             <button class="filter-btn" data-filter="product-design" role="tab" aria-selected="false">Product
                 Design</button>
-            <button class="filter-btn" data-filter="hardware" role="tab" aria-selected="false">Hardware</button>
+            <button class="filter-btn" data-filter="adverts" role="tab" aria-selected="false">Adverts</button>
         </div>
 
         <!-- Projects grid -->
@@ -70,6 +70,29 @@
             </p>
         </div>
     </footer>
+
+    <!-- Gallery Modal -->
+    <div class="modal" id="gallery-modal" aria-hidden="true">
+        <div class="modal__backdrop" data-close-modal></div>
+        <div class="modal__container">
+            <button class="modal__close" data-close-modal aria-label="Close gallery">×</button>
+            <h2 class="modal__title" id="modal-title"></h2>
+            <div class="modal__gallery" id="modal-gallery">
+                <div class="projects__loading">
+                    <div class="loader"></div>
+                    <p>Loading gallery...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox for full-size images -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox__close" data-close-lightbox aria-label="Close image">×</button>
+        <button class="lightbox__prev" id="lightbox-prev" aria-label="Previous image">‹</button>
+        <button class="lightbox__next" id="lightbox-next" aria-label="Next image">›</button>
+        <img src="" alt="" class="lightbox__image" id="lightbox-image">
+    </div>
 
     <!-- Scripts -->
     <script type="module" src="js/projects.js"></script>
