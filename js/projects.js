@@ -14,6 +14,7 @@ const STORAGE_BUCKET = 'portfolio-images';
 // State
 // ==========================================================================
 let allProjects = [];
+let allWorks = [];
 let currentFilter = 'all';
 let galleryImages = [];
 let currentLightboxIndex = 0;
@@ -23,9 +24,11 @@ let currentLightboxIndex = 0;
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     initProjects();
+    initWorks();
     initFilters();
     initModal();
     initLightbox();
+    initWorkModal();
 });
 
 async function initProjects() {
@@ -442,4 +445,147 @@ function navigateLightbox(direction) {
     const img = galleryImages[currentLightboxIndex];
     lightboxImage.src = img.url;
     lightboxImage.alt = img.name;
+}
+
+// ==========================================================================
+// Works (Catwees, Artist Posters, Game Posters)
+// ==========================================================================
+async function initWorks() {
+    try {
+        allWorks = await fetchWorks();
+        
+        // Filter and render by category
+        const catwees = allWorks.filter(w => w.category === 'catwees' || !w.category);
+        const artistPosters = allWorks.filter(w => w.category === 'artist-posters');
+        const gamePosters = allWorks.filter(w => w.category === 'game-posters');
+        
+        renderWorks(catwees, 'works-grid-catwees');
+        renderWorks(artistPosters, 'works-grid-artist-posters');
+        renderWorks(gamePosters, 'works-grid-game-posters');
+        
+    } catch (error) {
+        console.error('Error loading works:', error);
+    }
+}
+
+async function fetchWorks() {
+    const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/works?select=*&order=display_order.asc`,
+        {
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+}
+
+function renderWorks(works, gridId) {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+
+    if (works.length === 0) {
+        grid.innerHTML = '<p class="works__empty">No works found.</p>';
+        return;
+    }
+
+    grid.innerHTML = works.map((work, index) => {
+        const isVideo = work.image_url && (work.image_url.endsWith('.mp4') || work.image_url.endsWith('.webm'));
+        
+        return `
+            <article class="work-card" 
+                     style="animation-delay: ${index * 0.05}s"
+                     data-work-id="${work.id}"
+                     data-title="${work.title}"
+                     data-description="${work.description || ''}"
+                     data-client="${work.client || ''}"
+                     data-url="${work.image_url || ''}"
+                     data-type="${isVideo ? 'video' : 'image'}">
+                <div class="work-card__media">
+                    ${isVideo 
+                        ? `<video src="${work.image_url}" muted loop playsinline preload="metadata"></video>`
+                        : `<img src="${work.image_url}" alt="${work.title}" loading="lazy">`
+                    }
+                </div>
+                <div class="work-card__overlay">
+                    <span class="work-card__title">${work.title}</span>
+                </div>
+            </article>
+        `;
+    }).join('');
+
+    // Add click handlers
+    grid.querySelectorAll('.work-card').forEach(card => {
+        card.addEventListener('click', () => {
+            openWorkModal(card.dataset);
+        });
+
+        // Play video on hover only
+        const video = card.querySelector('video');
+        if (video) {
+            card.addEventListener('mouseenter', () => video.play());
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        }
+    });
+}
+
+// ==========================================================================
+// Work Modal
+// ==========================================================================
+function initWorkModal() {
+    const modal = document.getElementById('work-modal');
+    if (!modal) return;
+
+    modal.querySelectorAll('[data-close-work-modal]').forEach(el => {
+        el.addEventListener('click', closeWorkModal);
+    });
+}
+
+function openWorkModal(data) {
+    const modal = document.getElementById('work-modal');
+    const mediaContainer = document.getElementById('work-modal-media');
+    const titleEl = document.getElementById('work-modal-title');
+    const descEl = document.getElementById('work-modal-description');
+    const clientEl = document.getElementById('work-modal-client');
+
+    if (!modal) return;
+
+    // Set content
+    titleEl.textContent = data.title;
+    descEl.textContent = data.description;
+    clientEl.textContent = data.client ? `Client: ${data.client}` : '';
+
+    // Set media
+    if (data.type === 'video') {
+        mediaContainer.innerHTML = `<video src="${data.url}" controls autoplay loop></video>`;
+    } else {
+        mediaContainer.innerHTML = `<img src="${data.url}" alt="${data.title}">`;
+    }
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeWorkModal() {
+    const modal = document.getElementById('work-modal');
+    if (!modal) return;
+
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    // Stop video if playing
+    const video = modal.querySelector('video');
+    if (video) video.pause();
 }

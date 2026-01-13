@@ -61,6 +61,67 @@
         </div>
     </main>
 
+    <!-- Catwees / Client Work Section -->
+    <section class="works-section">
+        <div class="section__header">
+            <h2 class="section__title">Client Work</h2>
+            <p class="section__subtitle">Graphic design & marketing for Catwees Honda</p>
+        </div>
+
+        <div class="works__grid" id="works-grid-catwees">
+            <div class="projects__loading">
+                <div class="loader"></div>
+                <p>Loading works...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artist Posters Section -->
+    <section class="works-section">
+        <div class="section__header">
+            <h2 class="section__title">Artist Posters</h2>
+            <p class="section__subtitle">Album artwork & music poster designs</p>
+        </div>
+
+        <div class="works__grid" id="works-grid-artist-posters">
+            <div class="projects__loading">
+                <div class="loader"></div>
+                <p>Loading works...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Posters Section -->
+    <section class="works-section">
+        <div class="section__header">
+            <h2 class="section__title">Game Posters</h2>
+            <p class="section__subtitle">Video game promotional artwork</p>
+        </div>
+
+        <div class="works__grid" id="works-grid-game-posters">
+            <div class="projects__loading">
+                <div class="loader"></div>
+                <p>Loading works...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Detail Modal -->
+    <div class="modal" id="work-modal" aria-hidden="true">
+        <div class="modal__backdrop" data-close-work-modal></div>
+        <div class="modal__container modal__container--work">
+            <button class="modal__close" data-close-work-modal aria-label="Close">×</button>
+            <div class="work-detail">
+                <div class="work-detail__media" id="work-modal-media"></div>
+                <div class="work-detail__info">
+                    <h2 class="work-detail__title" id="work-modal-title"></h2>
+                    <p class="work-detail__description" id="work-modal-description"></p>
+                    <span class="work-detail__client" id="work-modal-client"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer__container">

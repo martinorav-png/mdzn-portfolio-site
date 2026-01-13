@@ -12,6 +12,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // Carousel settings
 const SLIDE_DURATION = 4000; // ms between slides
 const TRANSITION_DURATION = 600; // ms for fade transition
+const MAX_SLIDES = 10; // Limit slides for performance
 
 // ==========================================================================
 // State
@@ -29,25 +30,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function initShowcase() {
     try {
-        // Fetch all projects with images
-        const projects = await fetchShowcaseImages();
-        
-        if (projects.length === 0) {
+        // Fetch from both projects and works
+        const [projects, works] = await Promise.all([
+            fetchShowcaseProjects(),
+            fetchShowcaseWorks()
+        ]);
+
+        // Combine and filter for images only (no videos/gifs for performance)
+        const allItems = [
+            ...projects.filter(p => p.image_url && !p.image_url.endsWith('.gif') && !p.image_url.endsWith('.mp4')).map(p => ({
+                url: p.image_url,
+                title: p.title,
+                link: p.project_url || 'projects.html'
+            })),
+            ...works.filter(w => w.image_url && !w.image_url.endsWith('.gif') && !w.image_url.endsWith('.mp4')).map(w => ({
+                url: w.image_url,
+                title: w.title,
+                link: 'projects.html'
+            }))
+        ];
+
+        if (allItems.length === 0) {
             hideShowcase();
             return;
         }
 
-        // Extract and shuffle images
-        showcaseImages = projects
-            .filter(p => p.image_url)
-            .map(p => ({
-                url: p.image_url,
-                title: p.title,
-                link: p.project_url || 'projects.html'
-            }));
-
-        // Shuffle for random order
-        shuffleArray(showcaseImages);
+        // Shuffle and limit
+        shuffleArray(allItems);
+        showcaseImages = allItems.slice(0, MAX_SLIDES);
 
         // Render and start carousel
         renderShowcase();
@@ -62,7 +72,7 @@ async function initShowcase() {
 // ==========================================================================
 // Supabase API
 // ==========================================================================
-async function fetchShowcaseImages() {
+async function fetchShowcaseProjects() {
     const response = await fetch(
         `${SUPABASE_URL}/rest/v1/projects?select=title,image_url,project_url&order=display_order.asc`,
         {
@@ -74,10 +84,23 @@ async function fetchShowcaseImages() {
         }
     );
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) return [];
+    return await response.json();
+}
 
+async function fetchShowcaseWorks() {
+    const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/works?select=title,image_url&order=display_order.asc`,
+        {
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+
+    if (!response.ok) return [];
     return await response.json();
 }
 
