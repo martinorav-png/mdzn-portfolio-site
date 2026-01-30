@@ -1,0 +1,505 @@
+/* ==========================================================================
+   MDZN Portfolio – Projects Page Aero Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Page Header
+   -------------------------------------------------------------------------- */
+.page-header {
+    padding: 140px 40px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header__content {
+    padding: 60px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fade-in-up 0.8s ease;
+}
+
+.page-header__title {
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.page-header__subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Works Sections
+   -------------------------------------------------------------------------- */
+.works-section {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.works-section__container {
+    animation: fade-in-up 0.6s ease;
+}
+
+.section__header {
+    padding: 40px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.section__title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.section__subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Works Grid
+   -------------------------------------------------------------------------- */
+.works__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   Work Cards (Aero Style)
+   -------------------------------------------------------------------------- */
+.work-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15), 
+        rgba(255, 255, 255, 0.05)
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 0 60px rgba(14, 165, 233, 0.1);
+    position: relative;
+    animation: fade-in-scale 0.5s ease;
+}
+
+.work-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.work-card:hover::before {
+    left: 100%;
+}
+
+.work-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        0 0 80px rgba(14, 165, 233, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.work-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+        rgba(14, 165, 233, 0.1), 
+        rgba(6, 182, 212, 0.05)
+    );
+}
+
+.work-card__media::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.3) 0%, 
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+.work-card__media img,
+.work-card__media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.work-card:hover .work-card__media img,
+.work-card:hover .work-card__media video {
+    transform: scale(1.1);
+}
+
+.work-card__info {
+    padding: 24px;
+}
+
+.work-card__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.work-card__meta {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.work-card__meta-item {
+    display: inline-block;
+}
+
+.work-card__actions {
+    padding: 0 24px 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.work-card__btn {
+    flex: 1;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, 
+        rgba(14, 165, 233, 0.3), 
+        rgba(6, 182, 212, 0.2)
+    );
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.work-card__btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.work-card__btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.work-card__btn:hover {
+    background: linear-gradient(135deg, 
+        rgba(14, 165, 233, 0.4), 
+        rgba(6, 182, 212, 0.3)
+    );
+    transform: translateY(-2px);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        0 0 30px rgba(14, 165, 233, 0.3);
+}
+
+/* Show More Button */
+.works__show-more {
+    display: block;
+    margin: 32px auto 0;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2), 
+        rgba(255, 255, 255, 0.1)
+    );
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.works__show-more:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.3), 
+        rgba(255, 255, 255, 0.15)
+    );
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 24px rgba(0, 0, 0, 0.2),
+        0 0 40px rgba(14, 165, 233, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Loading State
+   -------------------------------------------------------------------------- */
+.projects__loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-secondary);
+}
+
+.loader-aero {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--aero-blue);
+    border-radius: 50%;
+    animation: spin-aero 1s linear infinite;
+    box-shadow: 
+        0 0 20px rgba(14, 165, 233, 0.3),
+        inset 0 0 20px rgba(14, 165, 233, 0.2);
+}
+
+@keyframes spin-aero {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Modal (Aero Style)
+   -------------------------------------------------------------------------- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.modal__container {
+    position: relative;
+    max-width: 900px;
+    max-height: 90vh;
+    margin: 20px;
+    padding: 40px;
+    overflow-y: auto;
+    animation: modal-slide-in 0.3s ease;
+    z-index: 1;
+}
+
+@keyframes modal-slide-in {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.work-detail {
+    display: grid;
+    gap: 32px;
+}
+
+.work-detail__media {
+    padding: 12px;
+}
+
+.work-detail__media img,
+.work-detail__media video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.work-detail__title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.work-detail__description {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.work-detail__client {
+    display: inline-block;
+    font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Empty State
+   -------------------------------------------------------------------------- */
+.works__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   Active Nav Link
+   -------------------------------------------------------------------------- */
+.nav__link.active {
+    background: linear-gradient(135deg, 
+        rgba(14, 165, 233, 0.3), 
+        rgba(6, 182, 212, 0.2)
+    );
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        0 0 30px rgba(14, 165, 233, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Animations
+   -------------------------------------------------------------------------- */
+@keyframes fade-in-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .works__grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 120px 24px 40px;
+    }
+    
+    .page-header__content {
+        padding: 40px 32px;
+    }
+    
+    .page-header__title {
+        font-size: 48px;
+    }
+    
+    .works-section {
+        padding: 24px;
+    }
+    
+    .works__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .section__header {
+        padding: 32px 24px;
+    }
+    
+    .section__title {
+        font-size: 32px;
+    }
+    
+    .modal__container {
+        margin: 10px;
+        padding: 24px;
+    }
+    
+    .work-detail__title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header__title {
+        font-size: 36px;
+    }
+    
+    .work-card__actions {
+        flex-direction: column;
+    }
+}

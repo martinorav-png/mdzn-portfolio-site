@@ -4,119 +4,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects — MDZN | Martin Orav</title>
+    <title>Projects – MDZN | Martin Orav</title>
     <meta name="description"
         content="Selected works and experiments by Martin Orav. Game design, web development, product design, and hardware projects.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&family=Trebuchet+MS&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/projects-aero.css">
 </head>
 
 <body>
-    <!-- Noise overlay for texture -->
-    <div class="noise-overlay" aria-hidden="true"></div>
+    <!-- Animated background -->
+    <div class="aero-background">
+        <div class="bubbles-container">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
+            <div class="bubble bubble-7"></div>
+            <div class="bubble bubble-8"></div>
+        </div>
+        <div class="light-rays">
+            <div class="ray ray-1"></div>
+            <div class="ray ray-2"></div>
+            <div class="ray ray-3"></div>
+        </div>
+        <div class="particles-container" id="particles"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav class="nav">
-        <a href="index.html" class="nav__logo">MDZN</a>
-        <ul class="nav__links">
-            <li><a href="projects.html" class="nav__link active">Projects</a></li>
-            <li><a href="index.html#about" class="nav__link">About</a></li>
-            <li><a href="index.html#contact" class="nav__link">Contact</a></li>
-        </ul>
+    <nav class="nav glass-nav">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo">
+                <span class="logo-shine">MDZN</span>
+            </a>
+            <ul class="nav__links">
+                <li><a href="projects.html" class="nav__link glass-button active">
+                        <span>Projects</span>
+                    </a></li>
+                <li><a href="index.html#about" class="nav__link glass-button">
+                        <span>About</span>
+                    </a></li>
+                <li><a href="index.html#contact" class="nav__link glass-button">
+                        <span>Contact</span>
+                    </a></li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Header -->
     <header class="page-header">
-        <h1 class="page-header__title">Projects</h1>
-        <p class="page-header__subtitle">Selected works & experiments</p>
+        <div class="page-header__content glass-panel">
+            <h1 class="page-header__title glow-text">Projects</h1>
+            <p class="page-header__subtitle">Selected works & experiments</p>
+        </div>
     </header>
 
     <!-- Web Apps Section -->
     <section class="works-section">
-        <div class="section__header">
-            <h2 class="section__title">Web Apps</h2>
-            <p class="section__subtitle">Interactive web applications</p>
-        </div>
+        <div class="works-section__container">
+            <div class="section__header glass-panel">
+                <h2 class="section__title glow-text">Web Apps</h2>
+                <p class="section__subtitle">Interactive web applications</p>
+            </div>
 
-        <div class="works__list" id="works-grid-webapps">
-            <div class="projects__loading">
-                <div class="loader"></div>
+            <div class="works__grid" id="works-grid-webapps">
+                <div class="projects__loading">
+                    <div class="loader-aero"></div>
+                    <p>Loading projects...</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Catwees / Client Work Section -->
+    <!-- Client Work Section -->
     <section class="works-section" data-lazy>
-        <div class="section__header">
-            <h2 class="section__title">Client Work</h2>
-            <p class="section__subtitle">Graphic design & marketing for Catwees Honda</p>
-        </div>
+        <div class="works-section__container">
+            <div class="section__header glass-panel">
+                <h2 class="section__title glow-text">Client Work</h2>
+                <p class="section__subtitle">Graphic design & marketing for Catwees Honda</p>
+            </div>
 
-        <div class="works__list" id="works-grid-catwees">
-            <div class="projects__loading">
-                <div class="loader"></div>
+            <div class="works__grid" id="works-grid-catwees">
+                <div class="projects__loading">
+                    <div class="loader-aero"></div>
+                    <p>Loading projects...</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Artist Posters Section -->
     <section class="works-section" data-lazy>
-        <div class="section__header">
-            <h2 class="section__title">Artist Posters</h2>
-            <p class="section__subtitle">Album artwork & music poster designs</p>
-        </div>
+        <div class="works-section__container">
+            <div class="section__header glass-panel">
+                <h2 class="section__title glow-text">Artist Posters</h2>
+                <p class="section__subtitle">Album artwork & music poster designs</p>
+            </div>
 
-        <div class="works__list" id="works-grid-artist-posters">
-            <div class="projects__loading">
-                <div class="loader"></div>
+            <div class="works__grid" id="works-grid-artist-posters">
+                <div class="projects__loading">
+                    <div class="loader-aero"></div>
+                    <p>Loading projects...</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Game Posters Section -->
     <section class="works-section" data-lazy>
-        <div class="section__header">
-            <h2 class="section__title">Game Posters</h2>
-            <p class="section__subtitle">Video game promotional artwork</p>
-        </div>
+        <div class="works-section__container">
+            <div class="section__header glass-panel">
+                <h2 class="section__title glow-text">Game Posters</h2>
+                <p class="section__subtitle">Video game promotional artwork</p>
+            </div>
 
-        <div class="works__list" id="works-grid-game-posters">
-            <div class="projects__loading">
-                <div class="loader"></div>
+            <div class="works__grid" id="works-grid-game-posters">
+                <div class="projects__loading">
+                    <div class="loader-aero"></div>
+                    <p>Loading projects...</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Detail Modal -->
+    <!-- Modal -->
     <div class="modal" id="work-modal" aria-hidden="true">
         <div class="modal__backdrop" data-close-work-modal></div>
-        <div class="modal__container modal__container--work">
-            <button class="modal__close" data-close-work-modal aria-label="Close">×</button>
+        <div class="modal__container glass-panel">
+            <button class="modal__close glass-button" data-close-work-modal aria-label="Close">×</button>
             <div class="work-detail">
-                <div class="work-detail__media" id="work-modal-media"></div>
+                <div class="work-detail__media glass-frame" id="work-modal-media"></div>
                 <div class="work-detail__info">
-                    <h2 class="work-detail__title" id="work-modal-title"></h2>
+                    <h2 class="work-detail__title glow-text" id="work-modal-title"></h2>
                     <p class="work-detail__description" id="work-modal-description"></p>
-                    <span class="work-detail__client" id="work-modal-client"></span>
+                    <span class="work-detail__client glass-tag" id="work-modal-client"></span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer glass-panel">
         <div class="footer__container">
-            <p class="footer__copyright">© 2025 Martin Orav. Built with care in Tallinn.</p>
+            <p class="footer__copyright">© 2026 Martin Orav. Built with care in Tallinn.</p>
             <p class="footer__back">
-                <a href="index.html">← Back to home</a>
+                <a href="index.html" class="glass-link">← Back to home</a>
             </p>
         </div>
     </footer>
@@ -124,6 +165,7 @@
     <!-- Scripts -->
     <script type="module" src="js/projects.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/aero-effects.js"></script>
 </body>
 
 </html>

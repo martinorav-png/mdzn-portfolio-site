@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MDZN Portfolio — Main JavaScript
+   MDZN Portfolio – Main JavaScript
    Navigation, smooth scrolling, and UI interactions
    ========================================================================== */
 

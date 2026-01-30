@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDZN — Martin Orav | Digital Product Design</title>
+    <title>MDZN – Martin Orav | Digital Product Design</title>
     <meta name="description"
         content="Digital Product Design portfolio of Martin Orav. Game design, interaction design, and creative development.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&family=Trebuchet+MS&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
@@ -20,40 +19,76 @@
 </head>
 
 <body>
-    <!-- Noise overlay for texture -->
-    <div class="noise-overlay" aria-hidden="true"></div>
+    <!-- Animated background -->
+    <div class="aero-background">
+        <div class="bubbles-container">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
+            <div class="bubble bubble-7"></div>
+            <div class="bubble bubble-8"></div>
+        </div>
+        <div class="light-rays">
+            <div class="ray ray-1"></div>
+            <div class="ray ray-2"></div>
+            <div class="ray ray-3"></div>
+        </div>
+        <div class="particles-container" id="particles"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav class="nav">
-        <a href="#hero" class="nav__logo">MDZN</a>
-        <ul class="nav__links">
-            <li><a href="projects.html" class="nav__link">Projects</a></li>
-            <li><a href="#about" class="nav__link">About</a></li>
-            <li><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
+    <nav class="nav glass-nav">
+        <div class="nav__container">
+            <a href="#hero" class="nav__logo">
+                <span class="logo-shine">MDZN</span>
+            </a>
+            <ul class="nav__links">
+                <li><a href="projects.html" class="nav__link glass-button">
+                        <span>Projects</span>
+                    </a></li>
+                <li><a href="#about" class="nav__link glass-button">
+                        <span>About</span>
+                    </a></li>
+                <li><a href="#contact" class="nav__link glass-button">
+                        <span>Contact</span>
+                    </a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero / Masthead -->
-    <header id="hero" class="hero hero--centered">
-        <div class="hero__content">
-            <p class="hero__issue">Portfolio 2026</p>
+    <header id="hero" class="hero">
+        <div class="hero__content glass-panel">
+            <div class="hero__badge">
+                <span class="badge-shine">Portfolio 2026</span>
+            </div>
             <h1 class="hero__title">
-                <span class="hero__name">Martin Orav</span>
+                <span class="hero__name glow-text">Martin Orav</span>
                 <span class="hero__tagline">Digital Product Designer</span>
             </h1>
             <p class="hero__subtitle">Game design, interaction design & creative development</p>
             <div class="hero__cta">
-                <a href="projects.html" class="btn btn--primary">View Projects</a>
-                <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+                <a href="projects.html" class="btn btn--aero btn--primary">
+                    <span>View Projects</span>
+                    <div class="btn-shine"></div>
+                </a>
+                <a href="#contact" class="btn btn--aero btn--glass">
+                    <span>Get in Touch</span>
+                    <div class="btn-shine"></div>
+                </a>
             </div>
         </div>
 
-        <!-- Showcase carousel - cycles through random works -->
-        <div class="hero__showcase" id="showcase-carousel">
-            <div class="showcase__frame">
+        <!-- Showcase carousel -->
+        <div class="hero__showcase glass-frame">
+            <div class="showcase__inner">
                 <div class="showcase__images" id="showcase-images">
                     <!-- Images injected via JS -->
                 </div>
+                <div class="showcase__reflection"></div>
             </div>
             <div class="showcase__indicators" id="showcase-indicators">
                 <!-- Dots injected via JS -->
@@ -64,16 +99,19 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="about__container">
-            <div class="about__image-wrapper">
-                <div class="about__image-frame">
+            <div class="about__image-wrapper glass-frame">
+                <div class="about__image-inner">
                     <img src="https://ceexzutcamztvkpotwty.supabase.co/storage/v1/object/public/portfolio-images/assets/profile.jpg"
                         alt="Martin Orav" class="about__image">
+                    <div class="image-glow"></div>
                 </div>
-                <div class="about__badge">Est. 2002</div>
+                <div class="about__badge glass-badge">
+                    <span>Est. 2002</span>
+                </div>
             </div>
 
-            <div class="about__content">
-                <h2 class="section__title">About</h2>
+            <div class="about__content glass-panel">
+                <h2 class="section__title glow-text">About</h2>
                 <div class="about__bio">
                     <p>My name is Martin and I am a Digital Product Design student at the Estonian Academy of Arts with
                         a focus on graphic design, interaction design, game design and more.</p>
@@ -83,11 +121,11 @@
                 </div>
 
                 <div class="about__stats">
-                    <div class="stat">
+                    <div class="stat glass-stat">
                         <span class="stat__value">EKA</span>
                         <span class="stat__label">Currently studying</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat glass-stat">
                         <span class="stat__value">Tallinn</span>
                         <span class="stat__label">Based in</span>
                     </div>
@@ -96,13 +134,13 @@
                 <div class="about__tools">
                     <h3 class="about__tools-title">Tools & Technologies</h3>
                     <div class="tools-grid">
-                        <span class="tool-tag">Figma</span>
-                        <span class="tool-tag">Unity</span>
-                        <span class="tool-tag">HTML/CSS/JS</span>
-                        <span class="tool-tag">Photoshop</span>
-                        <span class="tool-tag">After Effects</span>
-                        <span class="tool-tag">Illustrator</span>
-                        <span class="tool-tag">FL Studio</span>
+                        <span class="tool-tag glass-tag">Figma</span>
+                        <span class="tool-tag glass-tag">Unity</span>
+                        <span class="tool-tag glass-tag">HTML/CSS/JS</span>
+                        <span class="tool-tag glass-tag">Photoshop</span>
+                        <span class="tool-tag glass-tag">After Effects</span>
+                        <span class="tool-tag glass-tag">Illustrator</span>
+                        <span class="tool-tag glass-tag">FL Studio</span>
                     </div>
                 </div>
             </div>
@@ -111,17 +149,18 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="contact__container">
-            <h2 class="section__title">Get in Touch</h2>
+        <div class="contact__container glass-panel">
+            <h2 class="section__title glow-text">Get in Touch</h2>
             <p class="contact__subtitle">Interested in collaborating or just want to say hi?</p>
 
             <div class="contact__links">
-                <a href="mailto:martinoravdisain@gmail.com" class="contact__link">
+                <a href="mailto:martinoravdisain@gmail.com" class="contact__link glass-button">
                     <span class="contact__link-icon">✉</span>
                     <span class="contact__link-text">martinoravdisain@gmail.com</span>
+                    <div class="btn-shine"></div>
                 </a>
                 <a href="https://github.com/martinorav-png" target="_blank" rel="noopener noreferrer"
-                    class="contact__link">
+                    class="contact__link glass-button">
                     <span class="contact__link-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -129,9 +168,10 @@
                         </svg>
                     </span>
                     <span class="contact__link-text">GitHub</span>
+                    <div class="btn-shine"></div>
                 </a>
                 <a href="https://www.linkedin.com/in/martin-orav-30747539b" target="_blank" rel="noopener noreferrer"
-                    class="contact__link">
+                    class="contact__link glass-button">
                     <span class="contact__link-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -139,17 +179,18 @@
                         </svg>
                     </span>
                     <span class="contact__link-text">LinkedIn</span>
+                    <div class="btn-shine"></div>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer glass-panel">
         <div class="footer__container">
             <p class="footer__copyright">© 2026 Martin Orav. Built with care in Tallinn.</p>
             <p class="footer__back">
-                <a href="#hero">Back to top ↑</a>
+                <a href="#hero" class="glass-link">Back to top ↑</a>
             </p>
         </div>
     </footer>
@@ -157,6 +198,7 @@
     <!-- Scripts -->
     <script type="module" src="js/showcase.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/aero-effects.js"></script>
 </body>
 
 </html>

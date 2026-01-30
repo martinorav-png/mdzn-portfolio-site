@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MDZN Portfolio — Showcase Carousel
+   MDZN Portfolio – Showcase Carousel
    Animated gallery that cycles through random works on the hero
    ========================================================================== */
 

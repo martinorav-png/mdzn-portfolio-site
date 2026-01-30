@@ -1,10 +1,10 @@
 /* ==========================================================================
-   MDZN Portfolio — Projects Module
+   MDZN Portfolio – Projects Module
    Supabase integration for fetching and rendering project data
    ========================================================================== */
 
 // ==========================================================================
-// CONFIGURATION — Replace with your Supabase credentials
+// CONFIGURATION
 // ==========================================================================
 const SUPABASE_URL = 'https://ceexzutcamztvkpotwty.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNlZXh6dXRjYW16dHZrcG90d3R5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYzNTk2NDAsImV4cCI6MjA4MTkzNTY0MH0.TigK8iVPHMr0TR4LH7C2bRgvfzEVhzi6yUjuNdYub2g';
