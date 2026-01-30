@@ -400,7 +400,7 @@ ul, ol {
    Page Header (for sub-pages)
    -------------------------------------------------------------------------- */
 .page-header {
-    padding: var(--space-24) var(--space-8) var(--space-12);
+    padding: var(--space-16) var(--space-8) var(--space-6);
     text-align: center;
     max-width: 1400px;
     margin: 0 auto;
@@ -1165,78 +1165,186 @@ ul, ol {
 }
 
 /* --------------------------------------------------------------------------
-   Works Section (Catwees)
+   Works Section (Catwees, Posters, etc.)
    -------------------------------------------------------------------------- */
 .works-section {
-    padding: var(--space-16) var(--space-8) var(--space-24);
-    max-width: 1400px;
+    padding: var(--space-6) var(--space-8);
+    max-width: 1000px;
     margin: 0 auto;
     border-top: 1px solid var(--color-border);
 }
 
-.works-section .section__header {
-    margin-bottom: var(--space-10);
+.works-section:first-of-type {
+    border-top: none;
 }
 
-.works__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: var(--space-4);
+.works-section .section__header {
+    margin-bottom: var(--space-4);
+}
+
+.works-section .section__title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-1);
+}
+
+.works-section .section__subtitle {
+    font-size: var(--text-sm);
+}
+
+.works__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: var(--space-2);
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-hover) transparent;
+}
+
+.works__list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.works__list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.works__list::-webkit-scrollbar-thumb {
+    background: var(--color-border-hover);
+    border-radius: 3px;
+}
+
+.works__list::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
 }
 
 .work-card {
-    position: relative;
-    aspect-ratio: 1;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    cursor: pointer;
-    border: 1px solid var(--color-border);
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-3);
     background: var(--color-surface);
-    opacity: 0;
-    animation: fadeInUp 0.4s ease forwards;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    flex-shrink: 0;
 }
 
 .work-card:hover {
     border-color: var(--color-accent-cyan);
-}
-
-.work-card:hover .work-card__overlay {
-    opacity: 1;
-}
-
-.work-card:hover .work-card__media img,
-.work-card:hover .work-card__media video {
-    transform: scale(1.05);
+    background: var(--color-surface-elevated);
 }
 
 .work-card__media {
-    width: 100%;
-    height: 100%;
+    width: 180px;
+    height: 100px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .work-card__media img,
-.work-card__media video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-base);
+.work-card__media video,
+.work-card__media canvas {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
-.work-card__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(10, 10, 15, 0.9) 0%, transparent 50%);
+.work-card__info {
     display: flex;
-    align-items: flex-end;
-    padding: var(--space-3);
-    opacity: 0;
-    transition: opacity var(--transition-base);
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
 }
 
 .work-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    letter-spacing: 0.02em;
+    color: var(--color-text-primary);
+}
+
+.work-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.work-card__meta-item {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.work-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.work-card__btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.work-card__btn:hover {
+    border-color: var(--color-accent-cyan);
+    color: var(--color-accent-cyan);
+}
+
+.works__empty {
+    color: var(--color-text-muted);
+    padding: var(--space-8);
+    text-align: center;
+}
+
+.works__show-more {
+    display: block;
+    width: 100%;
+    margin-top: var(--space-3);
+    padding: var(--space-3);
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--color-text-primary);
+    color: var(--color-accent-cyan);
+    background: transparent;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.works__show-more:hover {
+    background: var(--color-surface);
+    border-style: solid;
+    border-color: var(--color-accent-cyan);
 }
 
 /* Work Detail Modal */
@@ -1292,9 +1400,22 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
-    .works__grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    .works__list {
+        max-height: 350px;
+    }
+    
+    .work-card {
+        grid-template-columns: 1fr;
         gap: var(--space-3);
+    }
+    
+    .work-card__media {
+        width: 100%;
+        height: 140px;
+    }
+    
+    .work-card__actions {
+        flex-direction: row;
     }
 }
 

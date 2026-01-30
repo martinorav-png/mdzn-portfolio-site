@@ -39,69 +39,58 @@
         <p class="page-header__subtitle">Selected works & experiments</p>
     </header>
 
-    <!-- Projects Section -->
-    <main class="projects">
-        <!-- Filter tags -->
-        <div class="projects__filters" role="tablist" aria-label="Filter projects by category">
-            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-            <button class="filter-btn" data-filter="game-design" role="tab" aria-selected="false">Game Design</button>
-            <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
-            <button class="filter-btn" data-filter="product-design" role="tab" aria-selected="false">Product
-                Design</button>
-            <button class="filter-btn" data-filter="adverts" role="tab" aria-selected="false">Adverts</button>
+    <!-- Web Apps Section -->
+    <section class="works-section">
+        <div class="section__header">
+            <h2 class="section__title">Web Apps</h2>
+            <p class="section__subtitle">Interactive web applications</p>
         </div>
 
-        <!-- Projects grid -->
-        <div class="projects__grid" id="projects-grid">
-            <!-- Project cards injected via JS -->
+        <div class="works__list" id="works-grid-webapps">
             <div class="projects__loading">
                 <div class="loader"></div>
-                <p>Loading projects...</p>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Catwees / Client Work Section -->
-    <section class="works-section">
+    <section class="works-section" data-lazy>
         <div class="section__header">
             <h2 class="section__title">Client Work</h2>
             <p class="section__subtitle">Graphic design & marketing for Catwees Honda</p>
         </div>
 
-        <div class="works__grid" id="works-grid-catwees">
+        <div class="works__list" id="works-grid-catwees">
             <div class="projects__loading">
                 <div class="loader"></div>
-                <p>Loading works...</p>
             </div>
         </div>
     </section>
 
     <!-- Artist Posters Section -->
-    <section class="works-section">
+    <section class="works-section" data-lazy>
         <div class="section__header">
             <h2 class="section__title">Artist Posters</h2>
             <p class="section__subtitle">Album artwork & music poster designs</p>
         </div>
 
-        <div class="works__grid" id="works-grid-artist-posters">
+        <div class="works__list" id="works-grid-artist-posters">
             <div class="projects__loading">
                 <div class="loader"></div>
-                <p>Loading works...</p>
             </div>
         </div>
     </section>
 
     <!-- Game Posters Section -->
-    <section class="works-section">
+    <section class="works-section" data-lazy>
         <div class="section__header">
             <h2 class="section__title">Game Posters</h2>
             <p class="section__subtitle">Video game promotional artwork</p>
         </div>
 
-        <div class="works__grid" id="works-grid-game-posters">
+        <div class="works__list" id="works-grid-game-posters">
             <div class="projects__loading">
                 <div class="loader"></div>
-                <p>Loading works...</p>
             </div>
         </div>
     </section>
@@ -131,29 +120,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- Gallery Modal -->
-    <div class="modal" id="gallery-modal" aria-hidden="true">
-        <div class="modal__backdrop" data-close-modal></div>
-        <div class="modal__container">
-            <button class="modal__close" data-close-modal aria-label="Close gallery">×</button>
-            <h2 class="modal__title" id="modal-title"></h2>
-            <div class="modal__gallery" id="modal-gallery">
-                <div class="projects__loading">
-                    <div class="loader"></div>
-                    <p>Loading gallery...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Lightbox for full-size images -->
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-        <button class="lightbox__close" data-close-lightbox aria-label="Close image">×</button>
-        <button class="lightbox__prev" id="lightbox-prev" aria-label="Previous image">‹</button>
-        <button class="lightbox__next" id="lightbox-next" aria-label="Next image">›</button>
-        <img src="" alt="" class="lightbox__image" id="lightbox-image">
-    </div>
 
     <!-- Scripts -->
     <script type="module" src="js/projects.js"></script>
